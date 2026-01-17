@@ -1,6 +1,8 @@
+using LoginApp.Data;
 using LoginApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,4 +48,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+using (var scope = app.Services.CreateScope())
+{
+    await IdentitySeed.SeedAsync(scope.ServiceProvider);
+}
+
 app.Run();
+

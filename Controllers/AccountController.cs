@@ -117,6 +117,15 @@ namespace LoginApp.Controllers
             await _signInManager.SignOutAsync(); // Identity cookie silinir
             return RedirectToAction("Index", "Home");
         }
+
+
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
     }
 }
    
