@@ -1,0 +1,39 @@
+﻿@model List<UserWithRolesVm>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2>Kullanıcı Yönetimi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>UserName</th>
+            <th>Admin mi?</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Email</td>
+                <td>@u.UserName</td>
+                <td>@(u.IsAdmin ? "Evet" : "Hayır")</td>
+                <td>
+                    <form asp-action="ToggleAdmin" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="userId" value="@u.UserId" />
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            @(u.IsAdmin ? "Admin Kaldır" : "Admin Yap")
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index">Admin Panel</a>
