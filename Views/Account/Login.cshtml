@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
+    var returnUrl = ViewData["ReturnUrl"] as string;
 }
 
 <div class="row justify-content-center">
@@ -13,7 +14,7 @@
                     <p class="text-muted mb-0">Sign in to continue.</p>
                 </div>
 
-                <form asp-action="Login" method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]" novalidate>
+                <form asp-action="Login" method="post" asp-route-returnUrl="@returnUrl" novalidate>
                     @Html.AntiForgeryToken()
 
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small mb-3"></div>
@@ -36,13 +37,16 @@
                             <label asp-for="RememberMe" class="form-check-label"></label>
                         </div>
 
-                        <a class="small text-decoration-none" asp-controller="Account" asp-action="Register">
+                        <a class="small text-decoration-none"
+                           asp-controller="Account"
+                           asp-action="Register"
+                           asp-route-returnUrl="@returnUrl">
                             Create an account
                         </a>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">
-                        Login
+                        Sign in
                     </button>
                 </form>
             </div>

@@ -28,15 +28,18 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Dashboard (Protected)</a>
                         </li>
-                        @if (User.IsInRole("Admin"))
-{
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a>
-                        </li>   
-}
+
+                        @* Show Admin link only when signed in AND in Admin role *@
+                        @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a>
+                            </li>
+                        }
                     </ul>
 
                     <ul class="navbar-nav">
@@ -44,9 +47,10 @@
                         {
                             <li class="nav-item">
                                 <span class="navbar-text me-2">
-                                    Hello, <strong>@User.Identity.Name</strong>
+                                    Hello, <strong>@User.Identity!.Name</strong>
                                 </span>
                             </li>
+
                             <li class="nav-item">
                                 <form class="d-inline" asp-controller="Account" asp-action="Logout" method="post">
                                     @Html.AntiForgeryToken()
@@ -56,11 +60,25 @@
                         }
                         else
                         {
+                            @* Preserve ReturnUrl from the current request *@
+                            var returnUrl = Context.Request.Path + Context.Request.QueryString;
+
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="nav-link"
+                                   asp-controller="Account"
+                                   asp-action="Login"
+                                   asp-route-returnUrl="@returnUrl">
+                                    Login
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="nav-link"
+                                   asp-controller="Account"
+                                   asp-action="Register"
+                                   asp-route-returnUrl="@returnUrl">
+                                    Register
+                                </a>
                             </li>
                         }
                     </ul>

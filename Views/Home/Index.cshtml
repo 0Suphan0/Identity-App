@@ -6,20 +6,23 @@
     <div class="col-lg-8">
         <div class="p-4 p-md-5 bg-light rounded-3 border">
             <h1 class="mb-3">Identity + Cookie Authentication Demo</h1>
+
             <p class="text-muted mb-4">
-                Bu mini proje; ASP.NET Core Identity ile kullanıcı oluşturma, cookie ile giriş,
-                [Authorize] korumalı sayfalar ve ReturnUrl akışını göstermeyi hedefler.
+                This mini project demonstrates user registration and sign-in with ASP.NET Core Identity,
+                cookie-based authentication, protected pages using <strong>[Authorize]</strong>, and the <strong>ReturnUrl</strong> flow.
             </p>
 
             <div class="d-flex gap-2 flex-wrap">
                 <a class="btn btn-primary" asp-controller="Home" asp-action="Dashboard">
                     Go to Dashboard (Protected)
                 </a>
+
                 <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Register">
                     Create Account
                 </a>
+
                 <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Login">
-                    Login
+                    Sign in
                 </a>
             </div>
         </div>

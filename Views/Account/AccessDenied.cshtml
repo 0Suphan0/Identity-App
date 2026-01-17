@@ -2,14 +2,23 @@
     ViewData["Title"] = "Access Denied";
 }
 
-<h2>⛔ Access Denied</h2>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-2">⛔ Access denied</h2>
+                <p class="mb-2">
+                    You don’t have permission to access this page.
+                </p>
+                <p class="text-muted mb-0">
+                    If you believe this is a mistake, please sign in with an authorized account or contact the administrator.
+                </p>
+            </div>
 
-<p>
-    Bu sayfaya erişim yetkiniz yok.
-</p>
-
-<p>
-    Eğer bunun bir hata olduğunu düşünüyorsanız, lütfen yetkili bir hesapla giriş yapın.
-</p>
-
-<a asp-controller="Home" asp-action="Index">Ana sayfaya dön</a>
+            <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Go to Home</a>
+                <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Go to Login</a>
+            </div>
+        </div>
+    </div>
+</div>

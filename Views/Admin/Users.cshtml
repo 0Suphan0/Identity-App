@@ -4,36 +4,53 @@
     ViewData["Title"] = "User Management";
 }
 
-<h2>Kullanıcı Yönetimi</h2>
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h2 class="h4 mb-1">User Management</h2>
+        <div class="text-muted small">
+            Assign or remove the <strong>Admin</strong> role.
+        </div>
+    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Email</th>
-            <th>UserName</th>
-            <th>Admin mi?</th>
-            <th>İşlem</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var u in Model)
-        {
-            <tr>
-                <td>@u.Email</td>
-                <td>@u.UserName</td>
-                <td>@(u.IsAdmin ? "Evet" : "Hayır")</td>
-                <td>
-                    <form asp-action="ToggleAdmin" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="userId" value="@u.UserId" />
-                        <button type="submit" class="btn btn-sm btn-primary">
-                            @(u.IsAdmin ? "Admin Kaldır" : "Admin Yap")
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <a class="btn btn-outline-secondary btn-sm" asp-action="Index">
+        Back to Admin Panel
+    </a>
+</div>
 
-<a asp-action="Index">Admin Panel</a>
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th style="width: 140px;">Admin?</th>
+                        <th style="width: 180px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var u in Model)
+                    {
+                        <tr>
+                            <td class="text-break">@u.Email</td>
+                            <td class="text-break">@u.UserName</td>
+                            <td>@(u.IsAdmin ? "Yes" : "No")</td>
+                            <td>
+                                <form asp-action="ToggleAdmin" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="userId" value="@u.UserId" />
+
+                                    <button type="submit"
+                                            class="btn btn-sm @(u.IsAdmin ? "btn-outline-danger" : "btn-primary")">
+                                        @(u.IsAdmin ? "Remove Admin" : "Make Admin")
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -2,8 +2,19 @@
     ViewData["Title"] = "Admin Panel";
 }
 
-<h2>Admin Panel</h2>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-2">Admin Panel</h2>
+                <p class="text-muted mb-4">
+                    Only users with the <strong>Admin</strong> role can access this area.
+                </p>
 
-<p>Bu sayfayi sadece <b>Admin</b> rolu olanlar gorebilir.</p>
-<a asp-action="Users">Kullanıcıları Listele</a>
-
+                <a class="btn btn-primary" asp-action="Users">
+                    Manage Users
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
