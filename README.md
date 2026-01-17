@@ -39,11 +39,11 @@ The goal is to demonstrate real-world Identity fundamentals with a clean, review
 ## 🚀 Getting Started
 
 ### 1) Clone
-```bash
-git clone <REPO_URL>
-cd Identity-App
+git clone https://github.com/0Suphan0/Identity-App.git <br>
+
+
 ###  2) Run
-dotnet restore
+dotnet restore <br>
 dotnet run
 
 ## 🔑 Demo Credentials (Seeded)
@@ -70,7 +70,6 @@ A default admin account is seeded on application startup (for demo purposes only
 ## 🖼️ Screenshots 
 
 
-```text
 docs/screenshots/
 ├─ home.png
 ├─ dashboard.png
