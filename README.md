@@ -71,11 +71,7 @@ A default admin account is seeded on application startup (for demo purposes only
 
 ## 🖼️ Screenshots 
 
-
-docs/screenshots/
-├─ home.png
-├─ dashboard.png
-└─ admin-users.png
+ProjectSS/ss1.png
 
 ## ✅ What this project demonstrates
 
