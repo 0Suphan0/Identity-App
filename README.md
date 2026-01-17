@@ -44,6 +44,8 @@ git clone https://github.com/0Suphan0/Identity-App.git <br>
 
 ###  2) Run
 dotnet restore <br>
+dotnet tool install --global dotnet-ef <br>
+dotnet ef database update <br>
 dotnet run
 
 ## 🔑 Demo Credentials (Seeded)
